@@ -14,10 +14,11 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @foreach ($names as $name)
+                </div>
+                <h1 class="text-center fw-bold text-uppercase">@foreach ($names as $name)
                     {{ __('Hello '. $name->name.' !') }}
                     @endforeach
-                </div>
+                </h1>
             </div>
         </div>
     </div>
