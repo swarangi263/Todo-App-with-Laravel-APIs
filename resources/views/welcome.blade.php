@@ -13,6 +13,7 @@
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
 </head>
 
@@ -28,7 +29,7 @@
                         @if(Route::has('login'))
                         <div class="mt-4 mr-4 space-x-4 sm:mt-6 sm:mr-6 sm:space-x-6">
                             @auth
-                            <a href="{{ url('/dashboard') }}" class="no-underline hover:underline text-sm font-normal text-light uppercase">{{ __('Home') }}</a>
+                            <a href="{{ url('/dashboard') }}" class="no-underline hover:underline text-sm font-normal text-dark uppercase">{{ __('Dashboard') }}</a>
                             @else
                             <a href="{{ route('login') }}" class="btn bg-dark no-underline hover:underline text-sm font-normal text-light uppercase">{{ __('Login') }}</a>
                             @if (Route::has('register'))
@@ -38,11 +39,13 @@
                         </div>
                         @endif
                     </div>
-
                 </div>
             </div>
-
         </div>
+    </div>
+    <div class="col d-flex justify-content-center" style="margin-top: 10rem;">
+        <a href="https://www.linkedin.com/in/swarangi263/" target="_blank" class="text-sm font-weight-bold text-light text-uppercase">{{ __('Swarangi Satpute') }}</a>
+
     </div>
 </body>
 
