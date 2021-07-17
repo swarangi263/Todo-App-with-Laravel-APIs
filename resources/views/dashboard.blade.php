@@ -42,20 +42,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $i = 1; ?>
+                    <?php $i = 1; $id = $user->id; ?>
                     @forelse ($user->task as $task)
                     <tr>
                         <td>{{$i}}</td>
                         <td>{{$task->task}}</td>
                         <td class="text-uppercase">{{$task->status}}</td>
-                        <form action="todo/status" method="POST">
+                        <form action="todo/status" method="POST" target="_blank">
                             @csrf
                             <input type="hidden" name="id" value="{{$task->id}}">
-                            <input type="hidden" name="status" value="{{$task->status}}">
                             @if($task->status == 'pending')
                             <td><button class="btn btn-success" type="submit">{{__('Done')}}</button></td>
+                            <input type="hidden" name="status" value="done">
                             @else
                             <td><button class="btn btn-outline-dark" type="submit">{{__('Pending')}}</button></td>
+                            <input type="hidden" name="status" value="pending">
                             @endif
                         </form>
                         <?php $i++; ?>
@@ -78,11 +79,12 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/todo/add" method="POST">
+                        <form action="/todo/add" method="POST" target="_blank">
                             @csrf
+                            <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <textarea class="form-control" rows="5" id="task" name="task" placeholder="Add your task..."></textarea>
                             <div class="text-center">
-                                <input type="submit" class="btn btn-primary mt-2" value="Save Task"></input>
+                                <input type="submit" class="btn btn-primary mt-2" value="Save Task" target="_blank"></input>
                             </div>
                         </form>
                     </div>
