@@ -23,13 +23,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
         $id = auth()->id();
-        $names = User::select('name')
-                ->where('id', '=', $id)
-                ->get();
-        Log::info($names);
-        return view('dashboard', compact('names'));
+        $user = User::find($id);
+
+        return view('dashboard')->with('user', $user);
     }
 }
