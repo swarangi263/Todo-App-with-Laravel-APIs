@@ -19,17 +19,7 @@ use App\Http\Controllers\TasksController;
 Route::middleware('auth:api')->group(function () {
 
     Route::get('/user', function (Request $req) {
-
-        // if ($req->apikey != 'helloatg') {
-
-        //     return response()->json([
-        //         'status' => '0',
-        //         'message' =>  'Invalid api key',
-
-        //     ]);
-        // } else {
             return $req->user();
-        // }
     });
 
     Route::get('/tasks/{id}', [TasksController::class, 'show']);
