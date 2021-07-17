@@ -28,3 +28,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::post('todo/status', [TasksController::class, 'update']);
 });
+
+Route::get('/test', function(Request $req){
+    return 'Tested';
+});
