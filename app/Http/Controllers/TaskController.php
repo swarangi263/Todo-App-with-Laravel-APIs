@@ -53,9 +53,9 @@ class TaskController extends Controller
             ], 500);
     }
 
-    function update(Request $request, $id)
+    function update(Request $request)
     {
-        $task = auth()->user()->tasks()->find($id);
+        $task = auth()->user()->tasks()->find($request->id);
 
 
         if (!$task) {
