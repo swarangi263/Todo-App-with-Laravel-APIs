@@ -3,7 +3,7 @@
 
 @section('content')
 <div class="container">
-    @if (Session::has(1))
+    @if (Session::has('1'))
     <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
         <strong>{{$message = Session::get(1)}}</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

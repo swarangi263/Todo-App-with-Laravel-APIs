@@ -18,7 +18,7 @@ class TasksController extends Controller
 
         $task = Task::find($task->id);
 
-        return redirect(route('dashboard'));
+        return redirect(route('dashboard'))->with('1', 'Successfully created a task');
     }
 
     function update(Request $req)
@@ -33,6 +33,6 @@ class TasksController extends Controller
 
         Log::info($task);
 
-        return redirect(route('dashboard'));
+        return redirect(route('dashboard'))->with('1', 'Marked task as '.$status);
     }
 }
