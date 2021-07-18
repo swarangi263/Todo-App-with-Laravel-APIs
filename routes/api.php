@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TasksController;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,16 +15,25 @@ use App\Http\Controllers\TasksController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('register', [UserAuthController::class, 'register']);
+Route::post('login', [UserAuthController::class, 'login']);
+
+Route::get('test', function(Request $request){return 'hiee' ;});
+
 
 Route::middleware('auth:api')->group(function () {
 
     Route::get('/user', function (Request $req) {
+
             return $req->user();
+
     });
+    Route::get('/tasks/{id}', [TaskController::class, 'show']);
 
-    Route::get('/tasks/{id}', [TasksController::class, 'show']);
+    Route::get('/task', [TaskController::class, 'index']);
 
-    Route::post('/todo/add', [TasksController::class, 'store']);
+    Route::post('/todo/add', [TaskController::class, 'store']);
 
-    Route::post('todo/status', [TasksController::class, 'update']);
+    Route::post('/todo/status', [TaskController::class, 'update']);
 });
+
