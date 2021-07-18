@@ -29,11 +29,11 @@ Route::middleware('auth:api')->group(function () {
 
     });
     Route::get('/tasks/{id}', [TaskController::class, 'show']);
-    
+
     Route::get('/task', [TaskController::class, 'index']);
 
     Route::post('/todo/add', [TaskController::class, 'store']);
 
-    Route::post('todo/status', [TaskController::class, 'update']);
+    Route::post('/todo/status', [TaskController::class, 'update']);
 });
 
