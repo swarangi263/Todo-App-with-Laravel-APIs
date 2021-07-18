@@ -7,7 +7,6 @@ use App\Models\Task;
 
 class TaskController extends Controller
 {
-    //
     public function index()
     {
         $tasks = auth()->user()->tasks;
@@ -55,7 +54,7 @@ class TaskController extends Controller
 
     function update(Request $request)
     {
-        $task = auth()->user()->tasks()->find($request->id);
+        $task = tasks()->find($request->id);
 
 
         if (!$task) {
