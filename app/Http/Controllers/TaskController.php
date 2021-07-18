@@ -64,13 +64,10 @@ class TaskController extends Controller
             ], 400);
         }
 
-        $task->status = $request->status;
-        
         $updated = $task->fill($request->all())->save();
 
         if ($updated)
             return response()->json([
-                'success' => true,
                 'status' => '1',
             'message' =>  'Marked task as '.$task->status
             ]);
