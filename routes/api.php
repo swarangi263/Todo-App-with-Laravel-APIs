@@ -5,6 +5,7 @@ use App\Models\Task;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,10 +23,6 @@ Route::middleware('auth:api')->group(function () {
     Route::get('/user', function (Request $req) {
         return $req->user();
     });
-
-    // Route::get('/tasks/{id}', [TasksController::class, 'show']);
-    // Route::post('/todo/add', [TasksController::class, 'store']);
-    // Route::post('todo/status', [TasksController::class, 'update']);
 
     Route::get('/tasks/{id}', function (Request $req) {
 
@@ -74,3 +71,6 @@ Route::middleware('auth:api')->group(function () {
 Route::get('/test', function (Request $req) {
     return 'Tested';
 });
+
+Route::post('/login', 'PassportController@login');
+Route::post('/register', 'PassportController@register');
