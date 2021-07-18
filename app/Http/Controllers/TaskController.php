@@ -11,7 +11,7 @@ class TaskController extends Controller
     public function index()
     {
         $tasks = auth()->user()->tasks;
- 
+
         return response()->json([
             'success' => true,
             'data' => $tasks
@@ -21,7 +21,7 @@ class TaskController extends Controller
     {
         $task = auth()->user()->tasks()->find($id);
 
-        if (!$tasks) {
+        if (!$task) {
             return response()->json([
                 'success' => false,
                 'message' => 'Task not found '
@@ -38,12 +38,12 @@ class TaskController extends Controller
     {
         $task = new Task;
         $task->task = $request->task;
-        
- 
+        $task->status = 'pending';
+
         if (auth()->user()->tasks()->save($task))
             return response()->json([
                 'status' => '1',
-                'message' => true,
+                'message' => 'Successfully created a task',
                 'data' => $task->toArray()
             ]);
         else
@@ -57,7 +57,7 @@ class TaskController extends Controller
     {
         $task = auth()->user()->tasks()->find($id);
 
-     
+
         if (!$task) {
             return response()->json([
                 'success' => false,
@@ -67,8 +67,8 @@ class TaskController extends Controller
 
         $task->status = $request->status;
         $updated = tasks()->save($task);
-        
- 
+
+
         if ($updated)
             return response()->json([
                 'success' => true,
@@ -78,8 +78,8 @@ class TaskController extends Controller
         else
             return response()->json([
                 'success' => false,
-                'message' => 'Post can not be updated'
-                
+                'message' => 'Task can not be updated'
+
             ], 500);
     }
 }
