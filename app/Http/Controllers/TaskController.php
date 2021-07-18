@@ -54,7 +54,7 @@ class TaskController extends Controller
 
     function update(Request $request)
     {
-        $task = Task::find($request->id);
+        $task = auth()->user()->tasks()->find($request->id);
 
 
         if (!$task) {
@@ -65,8 +65,8 @@ class TaskController extends Controller
         }
 
         $task->status = $request->status;
-        $updated = tasks()->save($task);
-
+        
+        $updated = $task->fill($request->all())->save();
 
         if ($updated)
             return response()->json([
