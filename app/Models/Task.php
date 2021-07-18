@@ -9,10 +9,11 @@ class Task extends Model
 {
     use HasFactory;
 
-    protected $table = 'task';
+    
+    protected $table = 'tasks';
 
     protected $fillable = [
-        'user_id',
+        // 'user_id',
         'task',
         'status',
     ];

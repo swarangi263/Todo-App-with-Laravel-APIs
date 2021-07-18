@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\TasksController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,19 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Auth::routes();
-
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::view('welcome','welcome');
-
-//Home
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
-
-Route::post('/todo/add', [TasksController::class, 'store']);
-
-Route::post('todo/status', [TasksController::class, 'update']);
-
-

@@ -1,11 +1,9 @@
 <?php
 
 use Illuminate\Http\Request;
-use App\Models\Task;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TasksController;
-use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserAuthController;
+use App\Http\Controllers\TaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,60 +15,25 @@ use App\Http\Controllers\Auth\RegisterController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('register', [UserAuthController::class, 'register']);
+Route::post('login', [UserAuthController::class, 'login']);
+
+Route::get('test', function(Request $request){return 'hiee' ;});
+
 
 Route::middleware('auth:api')->group(function () {
 
     Route::get('/user', function (Request $req) {
-        return $req->user();
+
+            return $req->user();
+
     });
+    Route::get('/tasks/{id}', [TaskController::class, 'show']);
+    
+    Route::get('/task', [TaskController::class, 'index']);
 
-    Route::get('/tasks/{id}', function (Request $req) {
+    Route::post('/todo/add', [TaskController::class, 'store']);
 
-        $tasks = Task::select('*')
-            ->where('user_id', '=', $req->id)
-            ->get();
-
-        return response()->json($tasks);
-    });
-
-    Route::post('/todo/add', function (Request $req) {
-        $task = Task::create([
-            'user_id' => $req->id,
-            'task' => $req->task,
-        ]);
-
-        $task = Task::find($task->id);
-        return response()->json([
-            'task' => $task,
-            'status' => '1',
-            'message' =>  'Successfully created a task',
-
-        ]);
-    });
-
-    Route::post('todo/status', function (Request $req) {
-
-        $task_id = $req->id;
-        $status = $req->status;
-
-        Task::where('id', '=', $task_id)
-        ->update(['status' => $status]);
-
-        $task = Task::find($task_id);
-
-        Log::info($task);
-
-        return response()->json([
-            'task' => $task,
-            'status' => '1',
-            'message' =>  'Marked task as '.$task->status,
-        ]);
-    });
+    Route::post('todo/status', [TaskController::class, 'update']);
 });
 
-Route::get('/test', function (Request $req) {
-    return 'Tested';
-});
-
-Route::post('/login', 'PassportController@login');
-Route::post('/register', 'PassportController@register');
