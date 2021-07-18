@@ -47,8 +47,8 @@ class TaskController extends Controller
             ]);
         else
             return response()->json([
-                'success' => false,
-                'message' => 'Task not added'
+                'status' => '0',
+                'message' => 'Invalid API key'
             ], 500);
     }
 
