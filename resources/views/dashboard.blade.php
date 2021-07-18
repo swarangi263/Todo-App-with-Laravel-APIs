@@ -48,7 +48,7 @@
                         <td>{{$i}}</td>
                         <td>{{$task->task}}</td>
                         <td class="text-uppercase">{{$task->status}}</td>
-                        <form action="todo/status" method="POST" target="_blank">
+                        <form action="todo/status" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{$task->id}}">
                             @if($task->status == 'pending')
@@ -79,18 +79,15 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/todo/add" method="POST" target="_blank">
+                        <form action="/todo/add" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="<?php echo $id; ?>">
                             <textarea class="form-control" rows="5" id="task" name="task" placeholder="Add your task..."></textarea>
                             <div class="text-center">
-                                <input type="submit" class="btn btn-primary mt-2" value="Save Task" target="_blank"></input>
+                                <input type="submit" class="btn btn-primary mt-2" value="Save Task"></input>
                             </div>
                         </form>
                     </div>
-                    <!-- <div class="modal-footer">
-
-                    </div> -->
                 </div>
             </div>
         </div>

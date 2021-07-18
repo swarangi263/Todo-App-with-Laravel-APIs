@@ -9,15 +9,6 @@ use Illuminate\Support\Facades\Log;
 
 class TasksController extends Controller
 {
-    public function show(Request $req)
-    {
-        $tasks = Task::select('*')
-            ->where('user_id', '=', $req->id)
-            ->get();
-
-        return response()->json($tasks);
-    }
-
     function store(Request $req)
     {
         $task= Task::create([
@@ -26,12 +17,8 @@ class TasksController extends Controller
         ]);
 
         $task = Task::find($task->id);
-        return response()->json([
-            'task' => $task,
-            'status' => '1',
-            'message' =>  'Successfully created a task',
 
-        ]);
+        return redirect(route('dashboard'));
     }
 
     function update(Request $req)
@@ -46,10 +33,6 @@ class TasksController extends Controller
 
         Log::info($task);
 
-        return response()->json([
-            'task' => $task,
-            'status' => '1',
-            'message' =>  'Marked task as '.$task->status,
-        ]);
+        return redirect(route('dashboard'));
     }
 }
