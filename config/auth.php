@@ -44,7 +44,7 @@ return [
         'api' => [
             'driver' => 'passport', //changed from token to passport
             'provider' => 'users',
-            'hash' => false,
+            // 'hash' => false,
         ],
     ],
 
