@@ -69,7 +69,8 @@ class TaskController extends Controller
         if ($updated)
             return response()->json([
                 'status' => '1',
-            'message' =>  'Marked task as '.$task->status
+                'message' =>  'Marked task as '.$task->status,
+                'data' => $task->toArray()
             ]);
         else
             return response()->json([
