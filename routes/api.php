@@ -17,8 +17,8 @@ use App\Http\Controllers\TaskController;
 |
 */
 
-// Route::post('register', [UserAuthController::class, 'register']);
-// Route::post('login', [UserAuthController::class, 'login']);
+Route::post('register', [UserAuthController::class, 'register']);
+Route::post('login', [UserAuthController::class, 'login']);
 
 Route::get('test', function(){
 
