@@ -9,7 +9,7 @@ class Task extends Model
 {
     use HasFactory;
 
-    
+
     protected $table = 'tasks';
 
     protected $fillable = [
@@ -22,6 +22,9 @@ class Task extends Model
 
     public function user()
     {
+        //Eloquent relationship is added to retrieve the tasks associated with the user
+        //Every task belong to the particular user
+
         return $this->belongsTo(User::class);
     }
 }

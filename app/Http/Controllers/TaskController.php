@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Task;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TaskController extends Controller
 {
     public function index()
     {
+        //Returns all tasks of the user with message
         $tasks = auth()->user()->tasks;
 
         return response()->json([
@@ -18,6 +20,8 @@ class TaskController extends Controller
     }
     public function show($id)
     {
+        //Returns particular task of the user with message
+
         $task = auth()->user()->tasks()->find($id);
 
         if (!$task) {
@@ -35,6 +39,8 @@ class TaskController extends Controller
 
     function store(Request $request)
     {
+        //Stores the new task and return with message
+
         $task = new Task;
         $task->task = $request->task;
         $task->status = 'pending';
@@ -54,8 +60,9 @@ class TaskController extends Controller
 
     function update(Request $request)
     {
-        $task = auth()->user()->tasks()->find($request->id);
+        //Updates the status of a particular task and returns with message
 
+        $task = auth()->user()->tasks()->find($request->id);
 
         if (!$task) {
             return response()->json([
@@ -69,7 +76,7 @@ class TaskController extends Controller
         if ($updated)
             return response()->json([
                 'status' => '1',
-                'message' =>  'Marked task as '.$task->status,
+                'message' =>  'Marked task as ' . $task->status,
                 'data' => $task->toArray()
             ]);
         else
