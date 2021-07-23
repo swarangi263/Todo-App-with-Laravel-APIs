@@ -29,7 +29,7 @@
                         @if (Route::has('login'))
                         <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                             @auth
-                            <a href="{{ url('dashboard') }}" class="no-underline hover:underline text-sm font-normal text-dark uppercase">{{ __('Dashboard') }}</a>
+                            <a href="{{ url('home') }}" class="no-underline hover:underline text-sm font-normal text-dark uppercase">{{ __('Dashboard') }}</a>
                             @else
                             <a href="{{ route('login') }}" class="btn bg-dark no-underline hover:underline text-sm font-normal text-light uppercase">{{ __('Login') }}</a>
 

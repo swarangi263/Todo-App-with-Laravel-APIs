@@ -115,9 +115,10 @@
 @section('script')
 <script>
     var added_no = <?php echo $i; ?>;
-    var token = {!!json_encode($token) !!};
+    // var token = {!!json_encode($token) !!};
+    var token ='eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNzk1ZDIxMzA4MmE5OTZhNzQ5ZTI1YjYxMWE2NWEyMzQxNGQ4N2E0NDZlYjJkMjY4OTVmMDg3OWNmYTY5MDZhYmEzNDYzNTI3MjAyNzQ0MTMiLCJpYXQiOjE2MjY5OTQ0MzkuNjcwOTQ5LCJuYmYiOjE2MjY5OTQ0MzkuNjcwOTU1LCJleHAiOjE2NTg1MzA0MzkuNjY1MDUyLCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.FL8CPYE5NY4_gEQaiqfCl0FPUz5gKnHVyect7owvSfqpPfGxImGVceoxvH3r6KXvMW8dkKb-TtZLcnp1udBzNeFfUQ3SIGcUYUN3gVDwI0bhwepRqc17qNCAskEHqqI8jbir-POuKg36TiFWo2SDovwRBAEQ1mmjKl0caj-qqWbYQZkh7KwrvPscHeINztgb3226SNcwTWSwcIN-op0PUyE2kEM32ralgLcE9qY83S9IjVWG2lLqLE8MsV-4mdsycu0juyLs6pKGws2Xpi4-mFKugSstFauCUr_lNlBUGooG4tWdAIY72pdJa0LtOssmQxNIaUxAZQRUITjvr5mMG4lCeAoqFBtng260cN-dmuOstNKGETx2oedZ4wx2kV3vpRKypiAtGyrt7gsojH7jcnXaOFjXonmbWwy7FFLdaSFGWrWAe0tuM02rOpi4YqVKrh0iYc3dQA7Gy5gDyKIte0eharev-A08suPTqYYUkEskcOdhARGTr1bkZqnuPAu3k8tVdD9xqk328J26XDQ7Yob0jbMjit01cmeeEZeUOyLJLF3GRN2QpSkN-qJS-Y-9HTchmxkzsys5g_EJCP4LYCqYNYXtfGv3E5MhFyrqHFWJnACKceY5flBZFQ7z7Dhqyw1G17-_NTMIWy2qaXN-6JwElMghcyBCy_Tged77Yos'
 
-    //Function to add task using ajax which is called on clicking 
+    //Function to add task using ajax which is called on clicking
     function add() {
 
         var id = document.getElementById('user_id').value;

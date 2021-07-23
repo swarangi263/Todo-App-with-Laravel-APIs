@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -18,18 +17,19 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application home.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
         //Creates a token for the user and returns it to the blade file
+
         $user = User::find(auth()->id());
 
         $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
 
-        return view('/dashboard', [
+        return view('/home', [
             'token' => $token,
             'user' => $user
         ]);
