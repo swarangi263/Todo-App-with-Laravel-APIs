@@ -27,7 +27,7 @@ class HomeController extends Controller
         //Creates a token for the user and returns it to the blade file
         $user = User::find(auth()->id());
 
-        $token = auth()->users()->createToken('LaravelAuthApp')->accessToken;
+        $token = auth()->user()->createToken('LaravelAuthApp')->accessToken;
 
         return view('/dashboard', [
             'token' => $token,

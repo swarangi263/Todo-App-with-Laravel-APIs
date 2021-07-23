@@ -30,7 +30,7 @@ Route::middleware('auth:api')->group(function () {
 
     Route::get('/user', function (Request $req) {
 
-            return $req->users();
+            return $req->user();
     });
 
     //API to get the list of all tasks of the user

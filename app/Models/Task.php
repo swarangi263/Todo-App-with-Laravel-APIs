@@ -20,7 +20,7 @@ class Task extends Model
 
     public $timestamps = false;
 
-    public function users()
+    public function user()
     {
         //Eloquent relationship is added to retrieve the tasks associated with the user
         //Every task belong to the particular user

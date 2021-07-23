@@ -11,7 +11,7 @@ class TaskController extends Controller
     public function index()
     {
         //Returns all tasks of the user with message
-        $tasks = auth()->users()->tasks;
+        $tasks = auth()->user()->tasks;
 
         return response()->json([
             'success' => true,
@@ -22,7 +22,7 @@ class TaskController extends Controller
     {
         //Returns particular task of the user with message
 
-        $task = auth()->users()->tasks()->find($id);
+        $task = auth()->user()->tasks()->find($id);
 
         if (!$task) {
             return response()->json([
@@ -45,7 +45,7 @@ class TaskController extends Controller
         $task->task = $request->task;
         $task->status = 'pending';
 
-        if (auth()->users()->tasks()->save($task))
+        if (auth()->user()->tasks()->save($task))
             return response()->json([
                 'status' => '1',
                 'message' => 'Successfully created a task',
@@ -62,7 +62,7 @@ class TaskController extends Controller
     {
         //Updates the status of a particular task and returns with message
 
-        $task = auth()->users()->tasks()->find($request->id);
+        $task = auth()->user()->tasks()->find($request->id);
 
         if (!$task) {
             return response()->json([
