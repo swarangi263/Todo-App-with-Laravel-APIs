@@ -13,6 +13,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
 
+    protected $table = 'users';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -45,6 +47,9 @@ class User extends Authenticatable
 
     public function tasks()
     {
+        //Eloquent relationship is added to retrieve the tasks associated with the user
+        //User has many Tasks
+
         return $this->hasMany(Task::class);
     }
 }

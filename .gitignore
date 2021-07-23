@@ -15,4 +15,4 @@ yarn-error.log
 /.vscode
 package.json
 package-lock.json
-
+/config
