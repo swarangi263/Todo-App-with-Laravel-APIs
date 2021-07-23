@@ -117,13 +117,8 @@
     var added_no = <?php echo $i; ?>;
     var token = {!!json_encode($token) !!};
 
-    // var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOGIwYzUwZWE1MDVlMmY0MThiMTZkNjBiYjk3NjNmZjkxYjMwY2ZlMTMwMTQyM2Y2NDRlMzczM2UzOTE2YzY2YjhjZjA2NjU0MzI1MjFkMDEiLCJpYXQiOjE2MjY5ODk1MjQuNjEyNDU5LCJuYmYiOjE2MjY5ODk1MjQuNjEyNDY2LCJleHAiOjE2NTg1MjU1MjQuNjAzOTMxLCJzdWIiOiI0Iiwic2NvcGVzIjpbXX0.afPEofkzyemtaEl1Co81jVGUlWYYkj-9KGbC04X9k8otIrbinzxw8Wv2Y5T1htyozNY3p3a2FJeCss6vQK38uJHNJfm_NMQacj11wacahZ98HkRFW6SPmFbFcwojRUSVGkqX8osDvjIl7c2_-IAyyAoEAM6ZhWZB2rwASzRDSxFNViNYw9ZSLK18gRDxZPuvhHg9jMSxPdPrOCVKO_lEEKOQ89ipsiBu36WlS3BM9D1Of2LUCmNGgQiq8AzOEDF08h2foi7lJyitjeghvhblQzgpztQaBdr8kbr4OA_CGKbl9YKmwsC-eDkv6sYaoMHHIHhnvgxJqKFUBEUZpJEBPFBWBkAwDv7xgf-T798rn4J5u-Wvf6Np5MaOrCFbFgeMVwXEikR-c0MaryeTQaDWZHbYwZ0k8GxeICaZ_dDA_TlVO0IPsj400CEPTRuTOc61_Y0D4h41pcWIqqv3RwONDC84vUIpL98WrZELBfAMqZFJ3vDa-m7oouutglvL6W43eixa9MYF1MC2X4SWfdbxiudcJbbDDfgzBbB8G7mfRzj7vO7n7cfSwKtdNwm9NY0JkgF44jbZDnWCDEiVjyo05LD4jtsm-g-JawWn0T_2AXMGa_i1AyWMQjAuxCQnmEjBKMhWwZ2oXwn32nfHDEVDx21s_KSXnWEfNcbQowmACug';
-
-    console.log(token);
-
+    //Function to add task using ajax which is called on clicking 
     function add() {
-
-        console.log("Im Adding");
 
         var id = document.getElementById('user_id').value;
         var task = document.getElementById('task').value;
